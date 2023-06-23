@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="src/css/style.css">
+  <script src="src/scripts/script.js" defer></script>
+  <title>Conversor de Medidas</title>
+</head>
+
+<body>
+  <main>
+    <section class="container">
+      <form action="">
+        <div class="categoria">
+          <label for="categoria">Categorias</label>
+          <select name="categoria" id="categoria">
+            <option value="">Selecione uma categoria</option>
+            <option value="comprimento">Comprimento</option>
+            <option value="peso">Peso</option>
+            <option value="temperatura">Temperatura</option>
+          </select>
+        </div>
+
+        <div class="uEntrada">
+          <label for="categoria">Unidade de Entrada</label>
+          <select name="categoria" id="categoria">
+            
+          </select>
+        </div>
+
+        <div class="uSaida">
+          <label for="categoria">Unidade de Saída</label>
+          <select name="categoria" id="categoria">
+        
+          </select>
+        </div>
+
+        <div class="valores">
+          <div class="vEntrada">
+            <label for="vEntrada">Valor</label>
+            <input type="text" id="" name="vEntrada">
+          </div>
+
+          <div class="vConvertido">
+            <label for="vConvertido">Valor Convertido</label>
+            <span id="vConvertido"></span>
+          </div>
+        </div>
+
+        <button id="botao">Converter</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
