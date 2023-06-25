@@ -138,6 +138,8 @@ const conversions = {
   }
 };
 
+let valueInput = document.getElementById('valueInput');
+
 convert.addEventListener('click', (event) => {
   event.preventDefault();
   let value = +valueInput.value;
@@ -147,3 +149,34 @@ convert.addEventListener('click', (event) => {
     showResult(conversionFunction(value));
   }
 });
+
+let result = document.querySelector('p');
+
+function showResult(valueResult) {
+  result.innerText = `${valueResult}`;
+}
+
+//Clear Form
+function clearForm() {
+  category.addEventListener('change', () => {
+    result.innerText = '';
+    exit.innerHTML = `
+      <option value="">---</option>
+    `
+    valueInput.value = '';
+    if(category.value === '') 
+      entry.innerHTML = `
+        <option value="">---</option>
+      `
+  });
+  entry.addEventListener('change', () => {
+    result.innerText = '';
+    if(entry.value === '')
+      exit.innerHTML = `
+      <option value="">---</option>
+    `
+  });
+  exit.addEventListener('change', () => {
+    result.innerText = '';
+  });
+}
