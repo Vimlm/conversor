@@ -105,7 +105,7 @@ category.addEventListener('change', (event) => {
 });
 
 //Funções de conversão
-//Esse é mais um objeto que guarda todas as informações de conversões necessárias, ele é divído em categorias, unidades de entrada e unidades de saída que é aonde irá puxar os resultados de acordo com as escolhas na página. 
+//Esse é mais um objeto que guarda todas as informações de conversões necessárias, ele é divído em categorias, unidades de entrada e unidades de saída que é aonde irá puxar os resultados de acordo com as escolhas na página. Alguns valores que forá utilizado o toFixed tornou-se necessário transformar em number com o "+" para ser reutilizado dentro de alguns funções posteriormente.
 /* Ex: Usuário escolhe temperatura > conversions['temperature'] 
        usuário escolhe celsius como entrada > conversions['temperature']['celsius']
        usuário escolhe fahrenheit como saida > conversions['temperature']['celsius']['fahrenheit']
@@ -120,12 +120,12 @@ const conversions = {
       kelvin: (value) => value + 273.15
     },
     fahrenheit: {
-      celsius: (value) => (value - 32) * 5 / 9,
-      kelvin: (value) => conversions['temperature']['fahrenheit']['celsius'](value) + 273.15
+      celsius: (value) => +((value - 32) * 5 / 9).toFixed(2),
+      kelvin: (value) => +(conversions['temperature']['fahrenheit']['celsius'](value) + 273.15).toFixed(2)
     },
     kelvin: {
       celsius: (value) => value - 273.15,
-      fahrenheit: (value) => conversions['temperature']['celsius']['fahrenheit'](conversions['temperature']['kelvin']['celsius'](value))
+      fahrenheit: (value) => (conversions['temperature']['celsius']['fahrenheit'](conversions['temperature']['kelvin']['celsius'](value))).toFixed(2)
     },
   },
   length: {
@@ -135,7 +135,7 @@ const conversions = {
     },
     centimeter: {
       meter: (value) => value / 100,
-      inch: (value) => value / 2.54
+      inch: (value) => (value / 2.54).toFixed(6)
     },
     inch: {
       centimeter: (value) => value * 2.54,
@@ -149,10 +149,10 @@ const conversions = {
     },
     gram: {
       kilogram: (value) =>  value / 1000,
-      pound: (value) => value / 453.6
+      pound: (value) => (value / 453.6).toFixed(6)
     },
     pound: {
-      kilogram: (value) => value / 2.205,
+      kilogram: (value) => (value / 2.205).toFixed(6),
       gram: (value) => value  * 453.6
     }
   }
