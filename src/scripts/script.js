@@ -92,3 +92,58 @@ category.addEventListener('change', (event) => {
     });
   }
 });
+
+const conversions = {
+  temperature: { 
+    celsius: {
+      fahrenheit: (value) => (value * 9 / 5) + 32,
+      kelvin: (value) => value + 273.15
+    },
+    fahrenheit: {
+      celsius: (value) => (value - 32) * 9 / 5,
+      kelvin: (value) => fahrenheit['celsius'](value) + 273.15
+    },
+    kelvin: {
+      celsius: (value) => value - 273.15,
+      fahrenheit: (value) => celcius['fahrenheit'](kelvin['celcius'](value))
+    },
+  },
+  length: {
+    meter: {
+      centimeter: (value) => value * 100,
+      inch: (value) => value * 39.37
+    },
+    centimeter: {
+      meter: (value) => value / 100,
+      inch: (value) => value / 2.54
+    },
+    inch: {
+      centimeter: (value) => value * 2.54,
+      meter: (value) => value / 39.37
+    },
+  },
+  weight: {
+    kilogram: {
+      gram: (value) => value * 1000,
+      pound: (value) => value * 2.205
+    },
+    gram: {
+      kilogram: (value) =>  value / 453.6,
+      pound: (value) => value / 453.6
+    },
+    pound: {
+      kilogram: (value) => value / 2.205,
+      gram: (value) => value  * 453.6
+    }
+  }
+};
+
+convert.addEventListener('click', (event) => {
+  event.preventDefault();
+  let value = +valueInput.value;
+
+  if (conversions[category.value][entry.value].hasOwnProperty(exit.value)) {
+    const conversionFunction = conversions[category.value][entry.value][exit.value];
+    showResult(conversionFunction(value));
+  }
+});
