@@ -71,3 +71,24 @@ const categories = {
     }
   }
 };
+
+function generateOptions(options) {
+  return options.map(option => `<option value="${option.value}">${option.text}</option>`).join('');
+}
+
+// Event listener for category change
+category.addEventListener('change', (event) => {
+  clearForm();
+  const selectedCategory = categories[event.target.value];
+  if (selectedCategory) {
+    entry.innerHTML = generateOptions(selectedCategory.options);
+
+    // Event listener for entry change
+    entry.addEventListener('change', () => {
+      const selectedOption = entry.value;
+      if (selectedCategory.exitOptions[selectedOption]) {
+        exit.innerHTML = generateOptions(selectedCategory.exitOptions[selectedOption]);
+      }
+    });
+  }
+});
