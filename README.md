@@ -54,7 +54,7 @@ Após a seleção das unidades, o usuário pode clicar em um botão de "Converte
 - O conversor de unidades foi implementado utilizando conceitos de manipulação de arrays, objetos, .map, chave e valor, e funções em JavaScript, proporcionando uma base sólida de programação.
 
 ## Executar o projeto
-- Para visualizar o preview online do projeto clique [aqui](caminho/do/arquivo.extensao);
+- Para visualizar o preview online do projeto clique [aqui](https://vimlm.github.io/conversor/);
 
 ## Visualizar o projeto
 - Clicando [aqui](https://github1s.com/Vimlm/conversor) você consegue ver ele online;
