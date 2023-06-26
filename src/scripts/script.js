@@ -131,7 +131,7 @@ const conversions = {
   length: {
     meter: {
       centimeter: (value) => value * 100,
-      inch: (value) => value * 39.37
+      inch: (value) => (value * 39.37).toFixed(2)
     },
     centimeter: {
       meter: (value) => value / 100,
@@ -165,11 +165,13 @@ const conversions = {
 //A constante recebe valores do objeto de conversao passando a dados dessa forma: objetoConversao[categoria][entrada][saida] buscando no objeto o que precisa ser convertido, depois é chamado a função showResult() que será explicada mais abaixo e se passa o conversionFunction passando o valor coletado como argumento.
 convert.addEventListener('click', (event) => {
   event.preventDefault();
+  verifyInput();
   let value = +valueInput.value;
-
-  if (conversions[category.value][entry.value].hasOwnProperty(exit.value)) {
-    const conversionFunction = conversions[category.value][entry.value][exit.value];
-    showResult(conversionFunction(value));
+  if(value != '') {
+      if (conversions[category.value][entry.value].hasOwnProperty(exit.value)) {
+        const conversionFunction = conversions[category.value][entry.value][exit.value];
+        showResult(conversionFunction(value));
+      }
   }
 });
 
@@ -205,4 +207,14 @@ function clearForm() {
   exit.addEventListener('change', () => {
     result.innerText = '';
   });
+}
+
+//Verifica valores de input para não deixa-los vazios ao tentar converter o valor ele alerta o usuário para preencher o mesmo. A mesma coisa acontece com o resultado.
+function verifyInput() {
+  if(entry.value == '' || exit.value == '' ) {
+    alert('Selecione todos campos.');
+  }
+  if(entry.value != '' && exit.value != '' && valueInput.value == '') {
+    alert('Você deve preencher um valor.')
+  }
 }
