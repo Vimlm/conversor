@@ -166,9 +166,9 @@ const conversions = {
 convert.addEventListener('click', (event) => {
   event.preventDefault();
   verifyInput();
-  let value = +valueInput.value;
-  if(value != '') {
-      if (conversions[category.value][entry.value].hasOwnProperty(exit.value)) {
+  if(valueInput.value != '') {
+    if (conversions[category.value][entry.value].hasOwnProperty(exit.value)) {
+        let value = +valueInput.value;
         const conversionFunction = conversions[category.value][entry.value][exit.value];
         showResult(conversionFunction(value));
       }
