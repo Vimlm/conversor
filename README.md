@@ -13,8 +13,9 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
  ┣ 📂 css  
  ┃ ┣ 📂 global  
  ┃ ┃ ┗ 📜 global.css  
- ┃ ┗ 📂 pages  
- ┃ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┗ 📜 index.css  
+ ┃ ┣ 📂 pages  
+ ┃ ┃&nbsp;&nbsp;&nbsp;&nbsp;┗ 📜 index.css  
+ ┃ ┗📜 style.css  
  ┣ 📂 scripts  
  ┃ ┗ 📜 script.js  
  ┣ 📜 index.html  
